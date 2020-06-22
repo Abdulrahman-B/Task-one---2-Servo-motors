@@ -1,0 +1,27 @@
+#include <Servo.h>
+
+Servo servo_3;
+
+Servo servo_4;
+
+void setup()
+{
+  pinMode(8, INPUT);
+  pinMode(A0, INPUT);
+  servo_3.attach(3);
+
+  servo_4.attach(4);
+
+}
+
+void loop()
+{
+  if (digitalRead(8) == LOW) {
+    servo_3.write(map(analogRead(A0), 0, 1023, 0, 180));
+    servo_4.write(map(analogRead(A0), 0, 1023, 0, 180));
+  } else {
+    servo_3.write(map(analogRead(A0), 0, 1023, 0, 180));
+    servo_4.write(map(analogRead(A0), 0, 1023, 180, 0));
+  }
+  
+}
